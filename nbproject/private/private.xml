@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Entidades/Premio.java</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Repositorios/PaisFacade.java</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Entidades/LibroPremio.java</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/web/Vista/autor/PremiosAutor.xhtml</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Controlador/PremioController.java</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/web/Vista/libro/LibrosPremiados.xhtml</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Repositorios/AutorFacade.java</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Controlador/PaisController.java</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Controlador/AutorController.java</file>
-            <file>file:/C:/Users/manue/Documents/GitHub/Programacion2/Biblioteca/src/java/Entidades/Autor.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
