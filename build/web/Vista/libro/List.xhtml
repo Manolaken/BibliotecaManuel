@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                    <p:dataTable value="#{libroController.items}" var="libro" rows="10" style="border:solid 1px"
+                     paginator="true" paginatorPosition="both"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+                        <p:column headerText="Titulo" sortBy="#{libro.nomLibro}" width="250px">
+                            <h:outputText value="#{libro.nomLibro} "/>
+                        </p:column>
+                        <p:column headerText="Año" width="75" sortBy="#{libro.ano}">
+                            <h:outputText value="#{libro.ano}">
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Portada" width="250">
+                        <p:commandLink title="#{libro.nomLibro}" onclick="PF('dlg#{libro.id}').show(); return false;">
+                            <h:graphicImage library="portadas" name="#{libro.portada}" height="60"/>
+                        </p:commandLink>
+                        <p:dialog widgetVar="dlg#{libro.id}" header="#{libro.nomLibro}" modal="true" resizable="false" closable="true">
+                            <h:graphicImage library="portadas" name="#{libro.portada}" width="400"/>
+                        </p:dialog>
+                        </p:column>
+                        <p:column headerText="Autores" width="250" >
+                            <h:selectManyListbox id="susAutores" style="width:250px; border: none; overflow-y: scroll; background: none;" size="3" disabled="true">
+                                <f:selectItems value="#{libro.autorLibroList}" var="autorLibro" itemLabel="#{autorLibro.autorId.nomAutor} #{autorLibro.autorId.apellido1} #{autorLibro.autorId.apellido2}"/> 
+                            </h:selectManyListbox>
+                        </p:column>
+                        <p:column headerText="Sus Premios" width="250">
+                            <h:selectManyListbox id="susPremios" style="width:250px; border: none; overflow-y: scroll; background: none;" size="3" disabled="true">
+                                <f:selectItems value="#{libro.libroPremioList}" var="libroPremio" itemLabel="#{libroPremio.premioId.nomPremio}"/> 
+                            </h:selectManyListbox>
+                        </p:column>
+                        <p:column headerText="Pélicula" style="text-align: center">
+                            <h:graphicImage library="iconos" name="trailer.png" rendered="#{libroController.tienePeli(libro)}" height="35"/>
+                        </p:column>
+                        <p:column headerText="Serie" style="text-align: center" sortBy="#{libro.serieId.denominacion}">
+                             <h:outputText value="#{libro.serieId.denominacion}">
+                             </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{libroController.prepareView}" value="#{bundle.ListLibroViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{libroController.prepareEdit}" value="#{bundle.ListLibroEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{libroController.destroy}" value="#{bundle.ListLibroDestroyLink}"/>
+                        </p:column>
+                    </p:dataTable>
+                <br />
+                <h:commandLink action="#{libroController.prepareCreate}" value="#{bundle.ListLibroCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListLibroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
